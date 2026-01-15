@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thumbsell – Buy Thumbnails</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+    }
+
+    header {
+      background: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #2563eb;
+    }
+
+    header button {
+      padding: 8px 14px;
+      border: none;
+      background: #2563eb;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .upload-box {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .upload-box input {
+      margin-top: 10px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      height: 140px;
+      object-fit: cover;
+    }
+
+    .price {
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .card button {
+      width: 100%;
+      padding: 10px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: gray;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Thumbsell</h1>
+  <div>
+    <button>Freelancer</button>
+    <button>Buyer</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="upload-box">
+    <h3>Upload Thumbnail</h3>
+    <input type="file" id="upload" accept="image/*">
+  </div>
+
+  <div class="cards" id="cards">
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x180">
+      <div class="price">₹400</div>
+      <button>Buy</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x180">
+      <div class="price">₹450</div>
+      <button>Buy</button>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Thumbsell – Made by Aryan
+</footer>
+
+<script>
+  const upload = document.getElementById("upload");
+  const cards = document.getElementById("cards");
+
+  upload.addEventListener("change", function () {
+    const file = upload.files[0];
+    if (!file) return;
+
+    const imgURL = URL.createObjectURL(file);
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${imgURL}">
+      <div class="price">₹400</div>
+      <button>Buy</button>
+    `;
+
+    cards.prepend(card);
+  });
+</script>
+
+</body>
+</html>
